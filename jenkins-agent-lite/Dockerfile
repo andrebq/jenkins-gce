@@ -1,0 +1,1 @@
+FROM jenkins/jnlp-slave:3.40-1-jdk11@sha256:f9cdd16bc7b5a6cdf7569f0727da034013d632f904619c663ba2e63c68ee4031
