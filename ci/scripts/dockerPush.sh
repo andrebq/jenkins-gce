@@ -8,19 +8,19 @@ readonly tagname
 function pushMaster {
     declare imageName
     imageName=andrebq/jenkins-gce-master:"${tagname}"
-    docker push andrebq/jenkins-gce-master "${imageName}"
+    docker push "${imageName}"
 
     imageName=andrebq/jenkins-gce-master-lite:"${tagname}"
-    docker push andrebq/jenkins-gce-master-lite "${imageName}"
+    docker push "${imageName}"
 }
 
 function pushAgent {
     declare imageName
     imageName=andrebq/jenkins-gce-agent:"${tagname}"
-    docker push andrebq/jenkins-gce-agent "${imageName}"
+    docker push "${imageName}"
 
     imageName=andrebq/jenkins-gce-agent-lite:"${tagname}"
-    docker push andrebq/jenkins-gce-agent-lite "${imageName}"
+    docker push "${imageName}"
 }
 
 pushMaster && pushAgent

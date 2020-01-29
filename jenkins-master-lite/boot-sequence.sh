@@ -10,7 +10,7 @@ function setup-jenkins-home-permissions {
 }
 
 function install-selected-plugins {
-    su -c 'bash /usr/local/bin/install-plugins.sh < /var/jenkins_boot_sequence/plugins.txt'
+    su -c 'bash /usr/local/bin/install-plugins.sh < /var/jenkins/boot/plugins.txt'
 }
 
 function start-jenkins {
