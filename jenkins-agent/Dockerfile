@@ -1,4 +1,4 @@
-FROM odavid/jenkins-jnlp-slave:3.36-1-20-debian@sha256:fcb6c2809e779234fe6f23420585ec9b8a8b0d78e7d408ede57241336cbdc599
+FROM odavid/jenkins-jnlp-slave:3.40-1-21-jdk11@sha256:cfebdf4fe04d2f9fed54eddb4af57623d676a5a80e4be8579641cedfc6340f19
 
 RUN mkdir -p /tools && \
     cd /tools && \
