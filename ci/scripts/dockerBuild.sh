@@ -9,13 +9,16 @@ function build {
     popd
 }
 
-
 readonly operation=${1}
 case "${operation}" in
-    master|agent)
+    master)
         build "${operation}"
         build "${operation}-lite"
-    ;;
+        ;;
+    agent)
+        build "${operation}"
+        build "${operation}-lite"
+        ;;
     *)
         echo "Invalid build type ${operation}"
         exit 1
