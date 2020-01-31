@@ -46,7 +46,6 @@ FROM odavid/jenkins-jnlp-slave:3.36-1-20-debian@sha256:fcb6c2809e779234fe6f23420
 COPY --from=toolbox /tools /tool
 RUN chown -R jenkins:jenkins /tool/google-cloud-sdk
 
-USER jenkins
-RUN bash /tool/google-cloud-sdk/install.sh --quiet
+RUN su jenkins -c 'bash /tool/google-cloud-sdk/install.sh --quiet'
 
 ENV JAVA8_HOME=/tool/jdk8/jdk8u242-b08

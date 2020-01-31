@@ -47,7 +47,7 @@ USER root
 COPY --from=toolbox /tools /tool
 RUN chown -R jenkins:jenkins /tool/google-cloud-sdk
 
-USER jenkins
-RUN bash /tool/google-cloud-sdk/install.sh --quiet
+RUN su jenkins -c 'bash /tool/google-cloud-sdk/install.sh --quiet'
 
+USER jenkins
 ENV JAVA8_HOME=/tool/jdk8/jdk8u242-b08
