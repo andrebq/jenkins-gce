@@ -41,7 +41,7 @@ RUN /tools/go-getter -mode file \
 
 ### Target Stage
 
-FROM odavid/jenkins-jnlp-slave:3.36-1-20-debian@sha256:fcb6c2809e779234fe6f23420585ec9b8a8b0d78e7d408ede57241336cbdc599
+FROM odavid/jenkins-jnlp-slave:3.36-1-20-jdk11@sha256:b49c6d154d3126f9e6096b144d1af8673e9441b8b4351b8abd8da08a3ba865df
 
 COPY --from=toolbox /tools /tool
 RUN chown -R jenkins:jenkins /tool/google-cloud-sdk
