@@ -39,11 +39,21 @@ RUN /tools/go-getter -mode file \
     tar -xf OpenJDK8U-jdk_x64_linux_hotspot_8u242b08.tar.gz && \
     rm /tools/jdk8/OpenJDK8U-jdk_x64_linux_hotspot_8u242b08.tar.gz
 
+RUN /tools/go-getter -mode file \
+    'https://nodejs.org/dist/v12.15.0/node-v12.15.0-linux-x64.tar.xz?checksum=sha256:63df953deb091c1500e1044bef01d1953117970e757e74e90d915e1a4a0d1c9c&archive=false' \
+    /tools/node-v12.15.0-linux-x64.tar.xz && \
+    cd /tools && \
+    tar -xf node-v12.15.0-linux-x64.tar.xz && \
+    mv /tools/node-v12.15.0-linux-x64 /tools/node-lts && \
+    rm /tools/node-v12.15.0-linux-x64.tar.xz
+
 ### Target Stage
 
 FROM jenkins/jnlp-slave:3.40-1-jdk11@sha256:f9cdd16bc7b5a6cdf7569f0727da034013d632f904619c663ba2e63c68ee4031
 
 USER root
+RUN apt-get update && apt-get install --no-install-recommends -y make
+
 COPY --from=toolbox /tools /tool
 RUN chown -R jenkins:jenkins /tool/google-cloud-sdk
 
@@ -51,3 +61,5 @@ RUN su jenkins -c 'bash /tool/google-cloud-sdk/install.sh --quiet'
 
 USER jenkins
 ENV JAVA8_HOME=/tool/jdk8/jdk8u242-b08
+ENV NODE_HOME=/tool/node-lts
+ENV PATH=${PATH}:${NODE_HOME}/bin
