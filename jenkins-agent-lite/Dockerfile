@@ -59,6 +59,10 @@ RUN chown -R jenkins:jenkins /tool/google-cloud-sdk
 
 RUN su jenkins -c 'bash /tool/google-cloud-sdk/install.sh --quiet'
 
+COPY boot-sequence.sh /boot-sequence.sh
+RUN chmod 0755 /boot-sequence.sh
+ENTRYPOINT [ "/boot-sequence.sh" ]
+
 USER jenkins
 ENV JAVA8_HOME=/tool/jdk8/jdk8u242-b08
 ENV NODE_HOME=/tool/node-lts

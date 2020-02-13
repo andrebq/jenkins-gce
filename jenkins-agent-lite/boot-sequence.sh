@@ -59,4 +59,4 @@ if ! try-call-home "${CALL_HOME}" "${CALL_HOME_ATTEMPTS}" "${CALL_HOME_DELAY}"; 
     echo "Unable to call home after many attempts. Do we have connection to external resources" >&2
 fi
 
-source "/entrypoint.sh"
+source "$(which jenkins-slave)"
