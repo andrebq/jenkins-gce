@@ -54,13 +54,13 @@ FROM odavid/jenkins-jnlp-slave:3.36-1-20-jdk11@sha256:b49c6d154d3126f9e6096b144d
 RUN apt-get update && apt-get install --no-install-recommends -y make
 
 COPY --from=toolbox /tools /tool
-RUN chown -R jenkins:jenkins /tool/google-cloud-sdk
+RUN chown -R jenkins:jenkins /tool
 
 RUN su jenkins -c 'bash /tool/google-cloud-sdk/install.sh --quiet'
 
 ENV JAVA8_HOME=/tool/jdk8/jdk8u242-b08
 ENV NODE_HOME=/tool/node-lts
-ENV PATH=${PATH}:${NODE_HOME}/bin:/tool
+ENV PATH=${PATH}:${NODE_HOME}/bin:/tool:/tool/google-cloud-sdk/bin
 
 COPY boot-sequence.sh /boot-sequence.sh
 RUN chmod 0755 /boot-sequence.sh

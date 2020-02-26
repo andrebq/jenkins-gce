@@ -55,7 +55,7 @@ USER root
 RUN apt-get update && apt-get install --no-install-recommends -y make
 
 COPY --from=toolbox /tools /tool
-RUN chown -R jenkins:jenkins /tool/google-cloud-sdk
+RUN chown -R jenkins:jenkins /tool
 
 RUN su jenkins -c 'bash /tool/google-cloud-sdk/install.sh --quiet'
 
@@ -66,4 +66,4 @@ ENTRYPOINT [ "/boot-sequence.sh" ]
 USER jenkins
 ENV JAVA8_HOME=/tool/jdk8/jdk8u242-b08
 ENV NODE_HOME=/tool/node-lts
-ENV PATH=${PATH}:${NODE_HOME}/bin:/tool
+ENV PATH=${PATH}:${NODE_HOME}/bin:/tool:/tool/google-cloud-sdk/bin
