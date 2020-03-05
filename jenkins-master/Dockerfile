@@ -1,4 +1,4 @@
-FROM odavid/my-bloody-jenkins:2.204.1-jdk11@sha256:07da42debd0bf03b22d01c1b7f2dd69019d4689e027c56a4dccf745071f54f8d
+FROM odavid/my-bloody-jenkins:2.204.2-182-jdk11@sha256:4a3ae9d4511f01c3bbc481a7bd86a466582228625e80abf44d8c34137c7f2698
 
 COPY plugins.txt /usr/share/jenkins/ref/
 
