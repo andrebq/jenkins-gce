@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:lts-slim@sha256:45556c35eec2e459cd6644c4d3925a0460e0b2b9d82a8bbfdf2452dbfba5d167
+FROM jenkins/jenkins:lts-slim
 
 USER root
 

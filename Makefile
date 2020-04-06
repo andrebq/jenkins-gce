@@ -25,3 +25,6 @@ run-lite: tag
 
 push:
 	bash -x ci/scripts/dockerPush.sh
+
+upgrade-plugins:
+	bash -x build-tools/upgradePlugins.sh
