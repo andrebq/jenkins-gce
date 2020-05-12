@@ -1,4 +1,4 @@
-.PHONY = check build build-master build-agent push tag fmt
+.PHONY: check build build-master build-agent push tag fmt
 
 check:
 	docker run --rm -t -w /src -v ${PWD}:/src koalaman/shellcheck ./ci/scripts/*.sh
